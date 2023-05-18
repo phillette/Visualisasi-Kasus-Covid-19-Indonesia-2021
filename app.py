@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd  
 import numpy as np
@@ -12,7 +13,8 @@ import plotly.express as px
 
 cnf, dth, rec, act = '#393e46', '#ff2e63', '#21bf73', '#fe9801' 
 
-df = pd.read_csv("D:\KULIAH\Kasus Covid 19 IDN 2021.csv", parse_dates=['Tanggal'])
+dir_path = os.path.dirname(os.path.realpath(__file__))
+df = pd.read_csv(dir_path + "Kasus Covid 19 IDN 2021.csv", parse_dates=['Tanggal'])
 #Data Cleaning
 df_cleaned = df.dropna(axis=1)
 df_cleaned_out = df_cleaned.loc[df["Wilayah"] != "Indonesia" ]
